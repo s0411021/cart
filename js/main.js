@@ -12,27 +12,55 @@
 			
 
 			res.forEach(function(r){
-			console.log(r);
 			const itemList = document.getElementById('itemList');
-			const cartwrap = document.getElementById('cartwrap');
-			const content = cartwrap.content;
-			const clone = content.cloneNode(true);
+			const cartwrap = document.createElement('div');
+			cartwrap.className ='cartwrap';
+			const imgP = document.createElement('p');
+			const img = document.createElement('img');
+			img.src = r.image;
+			const name = document.createElement('h1');
+			name.textContent = r.product;
+			const price = document.createElement('h3');
+			price.textContent = '港幣$ '+ r.price;
+			const des = document.createElement('p');
+			des.textContent = r.des;
+			const atc = document.createElement('a');
+			atc.className = 'cd-add-to-cart';
+			atc.textContent = '加入購物車';
+			atc.setAttribute("href", '#0');
+			atc.setAttribute("class", 'cd-add-to-cart');
+			atc.setAttribute("data-href", r.image);
+			atc.setAttribute("data-name", r.product);
+			atc.setAttribute("data-price", r.price);
 				
-			clone.querySelector('img').src = r.image;
-			clone.querySelector('.name').textContent = r.product;
-			clone.querySelector('.cost').textContent = r.price;
-			clone.querySelector('.item-description').textContent = r.des;
-			clone.querySelector('a')['data-href'] = r.image;	
-			clone.querySelector('a')['data-name'] = r.product;
-			clone.querySelector('a')['data-price'] = r.price; 	
+			cartwrap.appendChild(imgP).appendChild(img);
+			cartwrap.appendChild(name);
+			cartwrap.appendChild(price);
+			cartwrap.appendChild(des);
+			cartwrap.appendChild(atc);
+			itemList.appendChild(cartwrap);
+			atc.addEventListener('click',function(event){
+				event.preventDefault();
+			console.log($(this));
+			addToCart($(this));
 
-				itemList.appendChild(clone);
+			})
+			console.log(itemList);
 
 			})
 		});
 
 
 	})
+	/*<script>
+	<div class="cartwrap">
+	<p><img src=''/></p>
+	<h1></h1>
+	<h3></h3>
+	<p class="item-description"></p>
+	 <a href="#0" class="cd-add-to-cart" class="cd-add-to-cart" data-href='${r.image}' 
+	 data-name='${r.product}' data-price='${r.price}' data-rate="5">Add To Cart</a>
+	</script>*/
 
 	if( cartWrapper.length > 0 ) {
 		//store jQuery objects
@@ -81,6 +109,7 @@
 		//add product to cart
 		addToCartBtn.on('click', function(event){
 			event.preventDefault();
+			console.log($(this));
 			addToCart($(this));
 		});
 
