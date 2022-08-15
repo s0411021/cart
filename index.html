@@ -12,53 +12,31 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/css/bootstrap-slider.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.9.0/bootstrap-slider.js"></script>
-    <title>Add to Cart Interaction | CodyHouse</title>
+    <title>鴨腿湯飯</title>
 </head>
 
 <body>
 
     <main>
         <div id="searchwrap">
-            <input type="text" id="search" onkeyup="searchItem()" onfocusin="slider.disable();" onfocusout="slider.enable();" placeholder="Search for products..">
-            <button onclick="sortList()" class="clear-button">Sort by name</button>
+            <input type="text" id="search" onkeyup="searchItem()" onfocusin="slider.disable();" onfocusout="slider.enable();" placeholder="搵貨">
+            <button onclick="sortList()" class="clear-button">搜尋貨品</button>
         </div>
         <div id="slidecontainer">
-            Filter by price range: <b class="min-range">$ 1</b>
+            價錢範圍: <b class="min-range">$ 1</b>
             <input id="ex2" type="text" class="span2" value="" data-slider-min="1" data-slider-max="10000" data-slider-step="5" data-slider-value="[1,500]" /> <b class="max-range">$ 500</b>
         </div>
 
         <div id="itemList" class="cartwrapper">
-           
             <div id="noresult" style="display: none">
-                <h2>No result found</h2>
+                <h2>沒有合適的搜尋結果</h2>
             </div>
-
-            <template id="cartwrap">
-            <div class="cartwrap">
-                <p><img src='${r.image}'/></p>
-                <h1 class="name">${r.product}</h1>
-                <h3 class="cost">Price:$ ${r.price}</h3>
-                <p class="item-description">${r.des}</p>
-             	<a href="#0" class="cd-add-to-cart" class="cd-add-to-cart" data-href='${r.image}' data-name='${r.product}' data-price='${r.price}' data-rate="5">Add To Cart</a>
-            </template>    
-        </div>
-        <!-- <div class="container">
-	<div id="myDIV" class="header">
-	  <h3>My Wish List</h3>
-	  <input type="text" id="myInput" placeholder="Item to be added...">
-	  <span onclick="newElement()" class="addBtn">Add</span>
-	</div>
-
-	<ul id="myUL">
-	  <li>Buwad</li>
-	  <li class="checked">Colorless Blech</li>
-	  <li>Shampoo</li>
-	  <li>Diswashing Soap</li>
-	  <li>Lion&Tiger Katol</li>
-	  <li>School Supplies</li>
-	</ul>
-</div> -->
     </main>
+
+
+
+
+
 
     <div class="cd-cart-container empty">
         <a href="#0" class="cd-cart-trigger">
@@ -72,8 +50,8 @@
         <div class="cd-cart">
             <div class="wrapper">
                 <header>
-                    <h2 style="width: 100%">Cart <a href="#" id="clearbutton" style="float: right;">Empty Cart</a></h2>
-                    <span class="undo">Item removed. <a href="#0">Undo</a></span>
+                    <h2 style="width: 100%">購物車 <a href="#" id="clearbutton" style="float: right;">清空購物</a></h2>
+                    <span class="undo">項目已移除 <a href="#0">復原取消</a></span>
                 </header>
 
                 <div class="body">
@@ -84,7 +62,7 @@
                 </div>
 
                 <footer>
-                    <a href="checkout.html" class="checkout btn"><em>Checkout - $<span>0</span></em></a>
+                    <a href="checkout.html" class="checkout btn"><em>結賬 - 港幣$<span>0</span></em></a>
                 </footer>
             </div>
         </div>
