@@ -1,56 +1,56 @@
 //jQuery(document).ready(function($){
-	var cartWrapper = $('.cd-cart-container');
+	let cartWrapper = $('.cd-cart-container');
 	//product id - you don't need a counter in your real project but you can use your real product id
-	var productId = 0;
+	let productId = 0;
+	let gElm = function(id){return document.getElementById(id)};
+	let gCls = function(cls){return document.getElementsByClassName(cls)};
+	let eachLp = function(arr,func){arr.forEach(function(row){func(row)});};
+	
+	let itemDiv = function(r){
+		const itemList = document.getElementById('itemList');
+		const cartwrap = document.createElement('div');
+		cartwrap.className ='cartwrap';
+		const imgP = document.createElement('p');
+		const img = document.createElement('img');
+		img.src = r.image;
+		const name = document.createElement('h1');
+		name.textContent = r.product;
+		const price = document.createElement('h3');
+		price.textContent = '港幣$ '+ r.price;
+		const des = document.createElement('p');
+		des.textContent = r.des;
+		const atc = document.createElement('a');
+		atc.className = 'cd-add-to-cart';
+		atc.textContent = '加入購物車';
+		atc.setAttribute("href", '#0');
+		atc.setAttribute("class", 'cd-add-to-cart');
+		atc.setAttribute("data-href", r.image);
+		atc.setAttribute("data-name", r.product);
+		atc.setAttribute("data-price", r.price);
+			
+		cartwrap.appendChild(imgP).appendChild(img);
+		cartwrap.appendChild(name);
+		cartwrap.appendChild(price);
+		cartwrap.appendChild(des);
+		cartwrap.appendChild(atc);
+		itemList.appendChild(cartwrap);
+		atc.addEventListener('click',function(event){
+			event.preventDefault();
+		console.log($(this));
+		addToCart($(this));
+
+		})
+	};
+
 
 	document.addEventListener('DOMContentLoaded',function(){
 
 		fetch('https://script.google.com/macros/s/AKfycbxU4KBrfUX9DYMJvrhL-sIkPlEJ40zcl7Z18Z5vm8ayH4EZGtoYcqDwlkYNvCjXCQ6v/exec')
 		.then(res => {return res.json();})
 		.then(result => {
-			const res = result.Sheet1;
-			
-
-			res.forEach(function(r){
-			const itemList = document.getElementById('itemList');
-			const cartwrap = document.createElement('div');
-			cartwrap.className ='cartwrap';
-			const imgP = document.createElement('p');
-			const img = document.createElement('img');
-			img.src = r.image;
-			const name = document.createElement('h1');
-			name.textContent = r.product;
-			const price = document.createElement('h3');
-			price.textContent = '港幣$ '+ r.price;
-			const des = document.createElement('p');
-			des.textContent = r.des;
-			const atc = document.createElement('a');
-			atc.className = 'cd-add-to-cart';
-			atc.textContent = '加入購物車';
-			atc.setAttribute("href", '#0');
-			atc.setAttribute("class", 'cd-add-to-cart');
-			atc.setAttribute("data-href", r.image);
-			atc.setAttribute("data-name", r.product);
-			atc.setAttribute("data-price", r.price);
-				
-			cartwrap.appendChild(imgP).appendChild(img);
-			cartwrap.appendChild(name);
-			cartwrap.appendChild(price);
-			cartwrap.appendChild(des);
-			cartwrap.appendChild(atc);
-			itemList.appendChild(cartwrap);
-			atc.addEventListener('click',function(event){
-				event.preventDefault();
-			console.log($(this));
-			addToCart($(this));
-
-			})
-			console.log(itemList);
-
-			})
+			const res = result.Sheet1;	
+			eachLp(res,itemDiv);
 		});
-
-
 	})
 	/*<script>
 	<div class="cartwrap">
