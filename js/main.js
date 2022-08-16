@@ -42,7 +42,6 @@
 		})
 	};
 
-
 	document.addEventListener('DOMContentLoaded',function(){
 
 		fetch('https://script.google.com/macros/s/AKfycbxU4KBrfUX9DYMJvrhL-sIkPlEJ40zcl7Z18Z5vm8ayH4EZGtoYcqDwlkYNvCjXCQ6v/exec')
@@ -52,15 +51,6 @@
 			eachLp(res,itemDiv);
 		});
 	})
-	/*<script>
-	<div class="cartwrap">
-	<p><img src=''/></p>
-	<h1></h1>
-	<h3></h3>
-	<p class="item-description"></p>
-	 <a href="#0" class="cd-add-to-cart" class="cd-add-to-cart" data-href='${r.image}' 
-	 data-name='${r.product}' data-price='${r.price}' data-rate="5">Add To Cart</a>
-	</script>*/
 
 	if( cartWrapper.length > 0 ) {
 		//store jQuery objects
