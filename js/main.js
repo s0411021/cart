@@ -284,10 +284,6 @@
 
 		});
 
-		
-
-
-
 		cartTotal.text(price.toFixed(2));
 		cartCount.find('li').eq(0).text(quantity);
 		cartCount.find('li').eq(1).text(quantity+1);
@@ -377,7 +373,6 @@
 		var count = 1;
 		var total = 0;
 		var item;
-
 		Object.keys(arr).forEach(function(elem) {
 			var productAdded = $('<li class="product"><div class="product-image"><a href="#0"><img src="'+ arr[elem]['productHref'] +'" alt="placeholder"></a></div><div class="product-details"><h3><a href="#0">'+ elem +'</a></h3><span class="price">$'+ arr[elem]['productPrice'] +'</span><div class="actions"><a href="#0" class="delete-item">Delete</a><div class="quantity"><label for="cd-product-'+ count +'">Qty</label><span class="select"><select id="cd-product-'+ count +'" name="quantity"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option></select></span></div></div></div></li>');
 			productAdded.find('select').val(arr[elem]['count']);
@@ -388,8 +383,6 @@
 			total = total + item;
 		});
 		
-
-	
 		cartTotal.text(total.toFixed(2));
 	}
 
